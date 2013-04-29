@@ -60,6 +60,13 @@ Namespace My.Resources
             End Set
         End Property
         
+        Friend ReadOnly Property divider___Copy1() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("divider - Copy1", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property firetruck() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("firetruck", resourceCulture)

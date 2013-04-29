@@ -48,6 +48,7 @@ Partial Class Form1
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.ListView1 = New System.Windows.Forms.ListView
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Label3 = New System.Windows.Forms.Label
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -264,13 +265,16 @@ Partial Class Form1
         '
         'Button10
         '
+        Me.Button10.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Button10.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.firetruck
         Me.Button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button10.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button10.ForeColor = System.Drawing.Color.Thistle
         Me.Button10.Location = New System.Drawing.Point(875, 543)
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(183, 97)
         Me.Button10.TabIndex = 14
-        Me.Button10.UseVisualStyleBackColor = True
+        Me.Button10.UseVisualStyleBackColor = False
         '
         'SerialPort1
         '
@@ -288,11 +292,22 @@ Partial Class Form1
         '
         Me.Timer1.Interval = 50
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.Location = New System.Drawing.Point(989, 547)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(65, 13)
+        Me.Label3.TabIndex = 16
+        Me.Label3.Text = "Start Engine"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1280, 778)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ListView1)
         Me.Controls.Add(Me.Button10)
         Me.Controls.Add(Me.Label2)
@@ -344,5 +359,6 @@ Partial Class Form1
     Friend WithEvents SerialPort1 As System.IO.Ports.SerialPort
     Friend WithEvents ListView1 As System.Windows.Forms.ListView
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents Label3 As System.Windows.Forms.Label
 
 End Class

@@ -30,3 +30,14 @@ C:\Users\Beannayak\Desktop\mars oddessy\mars oddessy\obj\Debug\mars_oddessy.Form
 C:\Users\Beannayak\Desktop\mars oddessy\mars oddessy\obj\Debug\mars_oddessy.Form2.resources
 C:\Users\Beannayak\Desktop\mars oddessy\mars oddessy\obj\Debug\mars_oddessy.Resources.resources
 C:\Users\Beannayak\Desktop\mars oddessy\mars oddessy\obj\Debug\mars oddessy.vbproj.GenerateResource.Cache
+C:\Users\Beannayak\Desktop\karkhana rover full final\mars oddessy\mars oddessy\obj\Debug\mars oddessy.exe
+C:\Users\Beannayak\Desktop\karkhana rover full final\mars oddessy\mars oddessy\obj\Debug\mars oddessy.xml
+C:\Users\Beannayak\Desktop\karkhana rover full final\mars oddessy\mars oddessy\obj\Debug\mars oddessy.pdb
+C:\Users\Beannayak\Desktop\karkhana rover full final\mars oddessy\mars oddessy\bin\Debug\mars oddessy.exe
+C:\Users\Beannayak\Desktop\karkhana rover full final\mars oddessy\mars oddessy\bin\Debug\mars oddessy.pdb
+C:\Users\Beannayak\Desktop\karkhana rover full final\mars oddessy\mars oddessy\bin\Debug\mars oddessy.xml
+C:\Users\Beannayak\Desktop\karkhana rover full final\mars oddessy\mars oddessy\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Beannayak\Desktop\karkhana rover full final\mars oddessy\mars oddessy\obj\Debug\mars_oddessy.Form1.resources
+C:\Users\Beannayak\Desktop\karkhana rover full final\mars oddessy\mars oddessy\obj\Debug\mars_oddessy.Form2.resources
+C:\Users\Beannayak\Desktop\karkhana rover full final\mars oddessy\mars oddessy\obj\Debug\mars_oddessy.Resources.resources
+C:\Users\Beannayak\Desktop\karkhana rover full final\mars oddessy\mars oddessy\obj\Debug\mars oddessy.vbproj.GenerateResource.Cache

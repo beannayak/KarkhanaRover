@@ -22,20 +22,23 @@
     End Sub
 
     Public Sub queue(ByVal bytesArray() As Byte)
+        '@ puts characters to be send to robot in delayedCommandArray
+        '@ which is afterward checked by timer1 to send to robot
+
         Dim additionTime As New Date
 
+        '************getting a single Dimenstional array from 2 dimensional****
         For x As Integer = 0 To 17
             Form1.delayedCommandArray(Form1.count, x) = bytesArray(x)
         Next
+        '**********************************************************************
 
+        '******* add delay time according to location and place it in queue ***
         additionTime = Date.Now
         additionTime = additionTime.AddSeconds(timeAddition)
         Form1.delayedCommandArrayTimeStamp(Form1.count) = additionTime
         Form1.count += 1
-    End Sub
-
-    Private Sub Form1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Click
-        Debug.Print("A")
+        '**********************************************************************
     End Sub
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -44,6 +47,7 @@
         Dim flag As Boolean = True
         Dim retVal As String = ""
 
+        '*********************** Initilizing variables ********************
         source(0) = RadioButton1
         source(1) = RadioButton2
         source(2) = RadioButton3
@@ -53,7 +57,9 @@
         destination(1) = RadioButton7
         destination(2) = RadioButton6
         destination(3) = RadioButton5
+        '******************************************************************
 
+        '** Searching if robot/wireless device is connected or not ********
         For Each port In ports
             Try
                 With SerialPort1
@@ -72,17 +78,23 @@
             SerialPort1.Write("p                 ")
             delay(200)
             retVal = SerialPort1.ReadExisting()
-            If (InStr(retVal, "arduino", CompareMethod.Text) > 0) Then
+            If (InStr(retVal, "KarkhanaRover", CompareMethod.Text) > 0) Then
                 flag = False
                 Exit For
             Else
                 SerialPort1.Close()
             End If
         Next
+        '*************************************************************************
+
+        '**********Exit with message if robot is not attached*********************
         If (flag) Then
             MsgBox("Karkhana Rover not found, Connect the device and try again")
-            End
+            'End
         End If
+        '*************************************************************************
+
+        '****** Initilize listview if robot is present ***************************
         ListView1.View = View.Details
         ListView1.GridLines = True
         ListView1.FullRowSelect = True
@@ -105,14 +117,20 @@
         ListView1.Columns.Add("Dur4", 70)
         ListView1.Columns.Add("Dir5", 70)
         ListView1.Columns.Add("Dur5", 70)
+        ListView1.Columns.Add("Enable", 70)
         ListView1.Scrollable = True
+        '********************************************************************
+
+        '**************Start listening for timeStamp of queue****************
         Timer1.Enabled = True
+        '********************************************************************
     End Sub
 
     Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button10.Click
         Form2.Show()
     End Sub
 
+    '******************** Default Move commands from buttons ****************
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         defaultMove("w")
     End Sub
@@ -121,68 +139,6 @@
         defaultMove("q")
     End Sub
 
-    Private Sub PrintByte(ByVal value As Byte)
-        Dim bytes(0) As Byte
-        bytes(0) = value
-        SerialPort1.Write(bytes, 0, 1)
-    End Sub
-
-    Public Sub PrintByteArray(ByVal bytes() As Byte)
-        SerialPort1.Write(bytes, 0, bytes.Length)
-    End Sub
-
-    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
-        Debug.Print(SerialPort1.ReadExisting())
-        If (count <= 0) Then Exit Sub
-        If (Date.Now >= delayedCommandArrayTimeStamp(0)) Then
-            Dim aByte() As Byte = Nothing
-            count -= 1
-
-            '************reset first****************
-            Dim resetByte As Byte = 0
-            resetByte = CByte(Asc("&"))
-            PrintByte(resetByte)
-            '***************************************
-
-            ReDim aByte(17)
-            For x As Integer = 0 To 17
-                aByte(x) = delayedCommandArray(0, x)
-            Next
-            
-            PrintByteArray(aByte)
-            swapDates()
-            delay(50)
-        End If
-    End Sub
-
-    Private Sub swapDates()
-        Dim temp As Date = Nothing
-        For x As Integer = 0 To 49
-            temp = delayedCommandArrayTimeStamp(x + 1)
-            delayedCommandArrayTimeStamp(x) = temp
-        Next
-
-        Dim aByte(17) As Byte
-        For x As Integer = 0 To 49
-            For y As Integer = 0 To 17
-                aByte(y) = delayedCommandArray(x + 1, y)
-            Next
-            For y As Integer = 0 To 17
-                delayedCommandArray(x, y) = aByte(y)
-            Next
-        Next
-
-    End Sub
-
-    Private Sub defaultMove(ByVal direction As Char)
-        Dim aBytes(17) As Byte
-        aBytes(0) = CByte(Asc("m"))
-        aBytes(1) = CByte(Asc(direction))
-        For x As Integer = 0 To 15
-            aBytes(x + 2) = CByte(0)
-        Next
-        queue(aBytes)
-    End Sub
     Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
         defaultMove("x")
     End Sub
@@ -210,13 +166,92 @@
     Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click
         defaultMove("c")
     End Sub
+    '**************************************************************************************
 
+    '****** Sending data to robot in byte format ******************************************
+    Private Sub PrintByte(ByVal value As Byte)
+        Dim bytes(0) As Byte
+        bytes(0) = value
+        SerialPort1.Write(bytes, 0, 1)
+    End Sub
+    
+    Public Sub PrintByteArray(ByVal bytes() As Byte)
+        SerialPort1.Write(bytes, 0, bytes.Length)
+    End Sub
+    '*************************************************************************
+
+    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+        '@ Checks the timeStamp of bytes stored in queue and
+        '@ sends to robot accordingly
+
+        'Debug.Print(SerialPort1.ReadExisting())     ' for debugging purpose only
+        If (count <= 0) Then Exit Sub
+
+        If (Date.Now >= delayedCommandArrayTimeStamp(0)) Then
+            Dim aByte() As Byte = Nothing
+            count -= 1
+
+            '************reset robot first**********
+            '@ robot reset its listening function 
+            '@ once it gets '&'
+
+            Dim resetByte As Byte = 0
+            resetByte = CByte(Asc("&"))
+            PrintByte(resetByte)
+            '***************************************
+
+            '****Getting 1D array from 2D **********
+            ReDim aByte(17)
+            For x As Integer = 0 To 17
+                aByte(x) = delayedCommandArray(0, x)
+            Next
+            '***************************************
+            
+            PrintByteArray(aByte)
+            swapDates()
+            delay(50)           'give some time for transmit buffer to clear 
+        End If
+    End Sub
+
+    Private Sub swapDates()
+        Dim temp As Date = Nothing
+        For x As Integer = 0 To 49
+            temp = delayedCommandArrayTimeStamp(x + 1)
+            delayedCommandArrayTimeStamp(x) = temp
+        Next
+
+        Dim aByte(17) As Byte
+        For x As Integer = 0 To 49
+            For y As Integer = 0 To 17
+                aByte(y) = delayedCommandArray(x + 1, y)
+            Next
+            For y As Integer = 0 To 17
+                delayedCommandArray(x, y) = aByte(y)
+            Next
+        Next
+
+    End Sub
+
+    Private Sub defaultMove(ByVal direction As Char)
+        '@ Sends robot default direction to move
+        Dim aBytes(17) As Byte
+        aBytes(0) = CByte(Asc("m"))
+        aBytes(1) = CByte(Asc(direction))
+        For x As Integer = 0 To 15
+            aBytes(x + 2) = CByte(0)
+        Next
+        queue(aBytes)
+    End Sub
+    
     Private Sub RadioButton1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioButton1.Click, RadioButton2.Click, RadioButton3.Click, RadioButton4.Click, RadioButton5.Click, RadioButton6.Click, RadioButton7.Click, RadioButton8.Click
+        '@ Sets addition time to wait before sending data to robot
+        '@ to give a feel of interplanetary communication
         Dim sourceString As String = ""
         Dim destinationString As String = ""
         Dim totalString As String = ""
         Dim indexed As Integer = 0
 
+        '***** get the text of from where to wher *********
         For x As Integer = 0 To 3
             If (source(x).Checked) Then
                 sourceString = source(x).Text
@@ -225,13 +260,17 @@
                 destinationString = destination(x).Text
             End If
         Next
+        '*************************************************
 
+        '********** concat the string ********************
         If (sourceString < destinationString) Then
             totalString = sourceString + destinationString
         Else
             totalString = destinationString + sourceString
         End If
+        '*************************************************
 
+        '**** compare the string to get delay seconds ****
         For x As Integer = 0 To 9
             If (LCase(placesText(x)) = LCase(totalString)) Then
                 indexed = x
@@ -239,9 +278,13 @@
             End If
         Next
         timeAddition = placesDuration(indexed)
+        '*************************************************
     End Sub
 
     Private Sub ListView1_MouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles ListView1.MouseDoubleClick
+        '@ reopens the form2 (conditions selection window) with all 
+        '@ previously selected info.
+
         Form2.TextBox1.Text = ListView1.SelectedItems(0).SubItems(1).Text
         Form2.Sn.Text = ListView1.SelectedItems(0).SubItems(0).Text
         Form2.ComboBox12.Text = ListView1.SelectedItems(0).SubItems(2).Text
@@ -265,10 +308,8 @@
         If (Form2.ComboBox14.Text <> "Don't Use") Then Form2.CheckBox3.Checked = True
         If (Form2.ComboBox15.Text <> "Don't Use") Then Form2.CheckBox4.Checked = True
         If (Form2.ComboBox1.Text <> "Don't Use") Then Form2.CheckBox5.Checked = True
+        If (ListView1.SelectedItems(0).SubItems(17).Text = "False") Then Form2.CheckBox6.Checked = False
 
         Form2.Show()
-    End Sub
-
-    Private Sub SerialPort1_DataReceived(ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles SerialPort1.DataReceived
     End Sub
 End Class
