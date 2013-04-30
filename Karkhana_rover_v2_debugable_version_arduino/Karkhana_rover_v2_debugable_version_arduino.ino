@@ -222,7 +222,7 @@ unsigned char getDistance(){
   digitalWrite(2,LOW);
   int32_t microseconds=pulseIn(3,HIGH);
   if (microseconds > 60000){
-    return 255;
+    return 255;				//return farthest distance if nothing found
   }
   int32_t distance=(34*microseconds)/1000;
   return (unsigned char)distance;
