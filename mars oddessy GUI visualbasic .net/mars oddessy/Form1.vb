@@ -59,6 +59,16 @@
         destination(3) = RadioButton5
         '******************************************************************
 
+        '********* making white transparent in pictureBox *****************
+        Dim bm As Bitmap
+
+        Dim myAsm As System.Reflection.Assembly = System.Reflection.Assembly.GetExecutingAssembly()
+
+        bm = New Bitmap(myAsm.GetManifestResourceStream(Me.GetType, "Timon.bmp"))
+        bm.MakeTransparent(Color.Red)
+        PictureBox2.Image = bm
+        '******************************************************************
+
         '** Searching if robot/wireless device is connected or not ********
         For Each port In ports
             Try
@@ -126,44 +136,44 @@
         '********************************************************************
     End Sub
 
-    Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button10.Click
+    Private Sub Button10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Form2.Show()
     End Sub
 
     '******************** Default Move commands from buttons ****************
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click, Button12.Click
         defaultMove("w")
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click, Button11.Click
         defaultMove("q")
     End Sub
 
-    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button5.Click, Button15.Click
         defaultMove("x")
     End Sub
 
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click, Button13.Click
         defaultMove("e")
     End Sub
 
-    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click, Button14.Click
         defaultMove("a")
     End Sub
 
-    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
+    Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click, Button16.Click
         defaultMove("d")
     End Sub
 
-    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
+    Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click, Button19.Click
         defaultMove("z")
     End Sub
 
-    Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click
+    Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button8.Click, Button17.Click
         defaultMove("s")
     End Sub
 
-    Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click
+    Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button9.Click, Button18.Click
         defaultMove("c")
     End Sub
     '**************************************************************************************
@@ -172,11 +182,21 @@
     Private Sub PrintByte(ByVal value As Byte)
         Dim bytes(0) As Byte
         bytes(0) = value
-        SerialPort1.Write(bytes, 0, 1)
+        Try
+            SerialPort1.Write(bytes, 0, 1)
+        Catch E As Exception
+            MsgBox("KarkhanaRobot unpluged", MsgBoxStyle.Critical, "Karkhana Rover")
+            End
+        End Try
     End Sub
     
     Public Sub PrintByteArray(ByVal bytes() As Byte)
-        SerialPort1.Write(bytes, 0, bytes.Length)
+        Try
+            SerialPort1.Write(bytes, 0, bytes.Length)
+        Catch E As Exception
+            MsgBox("KarkhanaRobot unpluged", MsgBoxStyle.Critical, "Karkhana Rover")
+            End
+        End Try
     End Sub
     '*************************************************************************
 
@@ -310,6 +330,14 @@
         If (Form2.ComboBox1.Text <> "Don't Use") Then Form2.CheckBox5.Checked = True
         If (ListView1.SelectedItems(0).SubItems(17).Text = "False") Then Form2.CheckBox6.Checked = False
 
+        Form2.Show()
+    End Sub
+
+    Private Sub Button10_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    End Sub
+
+    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
         Form2.Show()
     End Sub
 End Class

@@ -25,17 +25,23 @@ char index = 0;
 char indexA = 0;
 boolean defaultMoves = true;
 
-char myDirection[50][5];
-char myDuration[50][5];
+typedef struct directionNode {
+  char directionL[5];
+  char duration[5];
+} myDirection;
 
-unsigned char tempG[50];
-unsigned char tempL[50];
-unsigned char distG[50];
-unsigned char distL[50];
-char colour[50];
-char enabled[50];
-char deep[50];
+typedef struct ruleNode {
+  unsigned char tempG;
+  unsigned char tempL;
+  unsigned char distG;
+  unsigned char distL;
+  char colour;
+  char enabled;
+  char deep;
+} myRule;
 
+myRule rules[50];
+myDirection direct[50];
 char currentDeep = -1;
 boolean flag = true;
 /**********************************************************/
@@ -54,11 +60,13 @@ void setup(){
   for (int x=2; x<=12; x++){
     pinMode (x, OUTPUT);
   }
+  pinMode (3, INPUT);
   digitalWrite (Er, HIGH);
   digitalWrite (El, HIGH);
 }
 
-char debugFlag = false;
+boolean debugFlag = false;
+boolean testFlag = false;
 
 void loop(){
   char r;
@@ -66,9 +74,11 @@ void loop(){
   /******************** read from computer **************/
   if (Serial.available()){
     r = Serial.read();
+    //Serial.println (r);
     if (r == '&') {
       Serial.println ("value reseted");
       index = 0;
+      testFlag = false;
     } else {
       valueFromComputer[index] = r;
       index ++;
@@ -78,62 +88,37 @@ void loop(){
   
   /************************ check the read value ********/
   if (index == 18){
+    testFlag = true;
     index = 0;
     switch (valueFromComputer[0]){
       case 'p':
       case 'P':
         Serial.print ("KarkhanaRover");
+        testFlag = true;
         break;
         
       case 'm':
       case 'M':
-        debugFlag = false;
-     
         defaultDirection = valueFromComputer[1];
         break;
         
       case 'c':
-      case 'C':
-        debugFlag = false;
-        
-        if (debugFlag) {
-          Serial.println ("value of c checked");
-          for (int i=0; i<=17; i++){
-            Serial.print (valueFromComputer[i]);
-          }
-        }
-        
+      case 'C':        
         indexA = valueFromComputer[7];
         if (indexA > currentDeep){
           currentDeep ++;
-          if (debugFlag) {
-            Serial.print ("currentDeep is: "); Serial.println (currentDeep, DEC);
-          }
         }
         
-        distG[indexA] = valueFromComputer[1];
-        distL[indexA] = valueFromComputer[2];
-        tempG[indexA] = valueFromComputer[3];
-        tempL[indexA] = valueFromComputer[4];
-        colour[indexA] = valueFromComputer[5];
-        enabled[indexA] = valueFromComputer[6];
+        rules[indexA].distG = valueFromComputer[1];
+        rules[indexA].distL = valueFromComputer[2];
+        rules[indexA].tempG = valueFromComputer[3];
+        rules[indexA].tempL = valueFromComputer[4];
+        rules[indexA].colour = valueFromComputer[5];
+        rules[indexA].enabled = valueFromComputer[6];
 
-        if (debugFlag){
-          Serial.print ("indexA is: "); Serial.println (indexA, DEC);
-          Serial.print ("Enabled is: "); Serial.println (enabled[indexA], DEC);
-        }
-        
         for (int x=0; x<=4; x++){
-          myDirection[indexA][x] = valueFromComputer[8 + x * 2];
-          myDuration[indexA][x] = valueFromComputer[9 + x * 2];
-          if (debugFlag){
-            Serial.print ("Duration of index: ");
-            Serial.print (indexA, DEC);
-            Serial.print (" and value: ");
-            Serial.print (x, DEC);
-            Serial.print (" is: ");
-            Serial.println (myDuration[indexA][x], DEC);
-          }
+          direct[indexA].directionL[x] = valueFromComputer[8 + x * 2];
+          direct[indexA].duration[x] = valueFromComputer[9 + x * 2];
         }
         break;
         
@@ -145,83 +130,55 @@ void loop(){
   
   /********************* check for sensor values ************/
   tempSensor = getTemp();
-  distSensor = getDistance();
+  if (testFlag) {
+    distSensor = getDistance();
+  }
   colourSensor = getColour();
   /**********************************************************/
   
   /**************************check rules ***********************/
-  if (debugFlag) {
-    Serial.print ("Current Deep is: ");
-    Serial.println (currentDeep, DEC);
-  }
   for (int x=0; x<=currentDeep; x++){
     flag = true;
-    if (enabled[x] == false) { continue; }
-    Serial.println ("testing");
-    if (tempG[x] != 255){
-      if (tempSensor < tempG[x]){
+    if (rules[x].enabled == false) { continue; }
+    
+    if (rules[x].tempG != 255){
+      if (tempSensor < rules[x].tempG){
         flag = false;
-        if (debugFlag){
-          Serial.println ("flag falsed Tg");
-        }
       }
     }
     
-    if (tempL[x] != 255){
-      if (tempSensor > tempL[x]){
+    if (rules[x].tempL != 255){
+      if (tempSensor > rules[x].tempL){
         flag = false;
-        if (debugFlag) {
-          Serial.println ("flag falsed Tl");
-        }
       }
     }  
     
-    Serial.print ("distG is: "); Serial.println (distG[x], DEC);
-    if (distG[x] != 255){
-     if ( distSensor < distG[x]){
+    if (rules[x].distG != 255){
+     if ( distSensor < rules[x].distG){
         flag = false;
-        if (debugFlag) {
-          Serial.println ("flag falsed dg");
-        }
      }
     }
-    Serial.print ("distL is: "); Serial.println (distL[x], DEC);
-    if (distL[x] != 255){
-     if ( distSensor > distL[x]){
+    
+    if (rules[x].distL != 255){
+     if ( distSensor > rules[x].distL){
       flag = false;
-      if (debugFlag) {
-        Serial.println ("flag falsed dl");
-      }
      }
     }
-    if (colour[x] != -1){
-      if (colour[x] != colourSensor){
+    if (rules[x].colour != -1){
+      if (rules[x].colour != colourSensor){
         flag = false;
-        if (debugFlag){
-          Serial.println ("flag falsed c");
-        }
       }
     }
     if (flag){
       defaultMoves = false;
-      if (debugFlag){
-        Serial.println ("kehi kam bhayo");
-      }
       
       for (int y=0; y<=4; y++){
-        if (myDirection[x][y] != -1){
-          if (debugFlag){
-            Serial.print("robot dir:");
-            Serial.print (myDirection[x][y]);
-            Serial.print (" robot Duration: "); 
-            Serial.println (myDuration[x][y], DEC);
-          }
-          
-          moveRobot(myDirection[x][y]);
+        if (direct[x].directionL[y] != -1){
+          moveRobot(direct[x].directionL[y]);
           
           /****************creating delay while still testing for serial inputs **************************/
           delayed = 0;
-          while (delayed <= myDuration[x][y]){
+          while (delayed <= direct[x].duration[y]){
             if (Serial.available()){
               r = Serial.read();
               if (r == '&') {
@@ -245,34 +202,18 @@ void loop(){
   
   /***************************default moves********************/
   if (defaultMoves){
-    if (debugFlag){
-      Serial.print ("robot moving in default direction of: ");
-      Serial.println (defaultDirection);
-    }
     moveRobot(defaultDirection);
   }
   /**********************************************************/
 }
 
 //******************Sensors value reading functions *********/
-
 unsigned char getTemp(){
-  int tempAnalogValue = analogRead(A2);
+  int tempAnalogValue = analogRead(A3);
   unsigned int temperature;
 
-  temperature = (5.0 * tempAnalogValue * 100.0)/1024.0 - 13;
+  temperature = (5.0 * tempAnalogValue * 100.0)/1024.0;
   return (unsigned char) temperature;
-}
-
-unsigned char getColour(){
-  char colorAnalogValue = analogRead(A3);
-  unsigned char retVal;
-  if (colorAnalogValue > 150) {
-    retVal = 'w';
-  } else {
-    retVal = 'b';
-  }
-  return retVal;
 }
 
 unsigned char getDistance(){
@@ -281,16 +222,22 @@ unsigned char getDistance(){
   digitalWrite(2,LOW);
   int32_t microseconds=pulseIn(3,HIGH);
   if (microseconds > 60000){
-    return 0;
+    return 255;
   }
   int32_t distance=(34*microseconds)/1000;
   return (unsigned char)distance;
 }
 
+char getColour(){
+  char colorAnalogValue = analogRead(A2);
+  if (colorAnalogValue < 110) {
+    return 'w';
+  } else {
+    return 'b';
+  }
+}
 /**************motorControl abstraction***************/
 void moveRobot(char Direction){
-//  Serial.print ("robot Moved: ");
-//  Serial.println (Direction);
   switch (Direction){
     case 'x':                  //Stop
       motorControl (0, 0);

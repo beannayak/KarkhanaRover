@@ -128,6 +128,51 @@
   <ItemGroup>
     <None Include="Resources\divider - Copy.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\side.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\side up.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\side - Copy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sideleft.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reverse left.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reverse left1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\side back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\side right.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reverse left - Copy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Start Engine-page-001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Timon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rules.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

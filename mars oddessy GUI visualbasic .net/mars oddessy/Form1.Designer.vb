@@ -24,15 +24,6 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Me.Label1 = New System.Windows.Forms.Label
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Button2 = New System.Windows.Forms.Button
-        Me.Button3 = New System.Windows.Forms.Button
-        Me.Button4 = New System.Windows.Forms.Button
-        Me.Button5 = New System.Windows.Forms.Button
-        Me.Button6 = New System.Windows.Forms.Button
-        Me.Button7 = New System.Windows.Forms.Button
-        Me.Button8 = New System.Windows.Forms.Button
-        Me.Button9 = New System.Windows.Forms.Button
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.RadioButton4 = New System.Windows.Forms.RadioButton
         Me.RadioButton3 = New System.Windows.Forms.RadioButton
@@ -43,14 +34,35 @@ Partial Class Form1
         Me.RadioButton6 = New System.Windows.Forms.RadioButton
         Me.RadioButton7 = New System.Windows.Forms.RadioButton
         Me.RadioButton8 = New System.Windows.Forms.RadioButton
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Button10 = New System.Windows.Forms.Button
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.ListView1 = New System.Windows.Forms.ListView
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Label3 = New System.Windows.Forms.Label
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.Button19 = New System.Windows.Forms.Button
+        Me.Button7 = New System.Windows.Forms.Button
+        Me.Button18 = New System.Windows.Forms.Button
+        Me.Button9 = New System.Windows.Forms.Button
+        Me.Button17 = New System.Windows.Forms.Button
+        Me.Button16 = New System.Windows.Forms.Button
+        Me.Button8 = New System.Windows.Forms.Button
+        Me.Button15 = New System.Windows.Forms.Button
+        Me.Button6 = New System.Windows.Forms.Button
+        Me.Button14 = New System.Windows.Forms.Button
+        Me.Button5 = New System.Windows.Forms.Button
+        Me.Button13 = New System.Windows.Forms.Button
+        Me.Button4 = New System.Windows.Forms.Button
+        Me.Button12 = New System.Windows.Forms.Button
+        Me.Button3 = New System.Windows.Forms.Button
+        Me.Button11 = New System.Windows.Forms.Button
+        Me.Button2 = New System.Windows.Forms.Button
+        Me.Button1 = New System.Windows.Forms.Button
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -62,94 +74,13 @@ Partial Class Form1
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Default Controls"
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(163, 98)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(55, 49)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Sharp Left"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(224, 98)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(55, 49)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Forward"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(285, 98)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(55, 49)
-        Me.Button3.TabIndex = 3
-        Me.Button3.Text = "Sharp Right"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(164, 153)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(55, 49)
-        Me.Button4.TabIndex = 4
-        Me.Button4.Text = "Left"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Button5
-        '
-        Me.Button5.Location = New System.Drawing.Point(224, 153)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(55, 49)
-        Me.Button5.TabIndex = 5
-        Me.Button5.Text = "Stop"
-        Me.Button5.UseVisualStyleBackColor = True
-        '
-        'Button6
-        '
-        Me.Button6.Location = New System.Drawing.Point(285, 153)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(55, 49)
-        Me.Button6.TabIndex = 6
-        Me.Button6.Text = "Right"
-        Me.Button6.UseVisualStyleBackColor = True
-        '
-        'Button7
-        '
-        Me.Button7.Location = New System.Drawing.Point(164, 208)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(55, 49)
-        Me.Button7.TabIndex = 7
-        Me.Button7.Text = "Reverse Left"
-        Me.Button7.UseVisualStyleBackColor = True
-        '
-        'Button8
-        '
-        Me.Button8.Location = New System.Drawing.Point(224, 208)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(55, 49)
-        Me.Button8.TabIndex = 8
-        Me.Button8.Text = "Back"
-        Me.Button8.UseVisualStyleBackColor = True
-        '
-        'Button9
-        '
-        Me.Button9.Location = New System.Drawing.Point(285, 208)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(55, 49)
-        Me.Button9.TabIndex = 9
-        Me.Button9.Text = "Reverse Right"
-        Me.Button9.UseVisualStyleBackColor = True
-        '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.RadioButton4)
         Me.GroupBox1.Controls.Add(Me.RadioButton3)
         Me.GroupBox1.Controls.Add(Me.RadioButton2)
         Me.GroupBox1.Controls.Add(Me.RadioButton1)
-        Me.GroupBox1.Location = New System.Drawing.Point(25, 375)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 544)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(236, 174)
         Me.GroupBox1.TabIndex = 10
@@ -204,7 +135,7 @@ Partial Class Form1
         Me.GroupBox2.Controls.Add(Me.RadioButton6)
         Me.GroupBox2.Controls.Add(Me.RadioButton7)
         Me.GroupBox2.Controls.Add(Me.RadioButton8)
-        Me.GroupBox2.Location = New System.Drawing.Point(295, 375)
+        Me.GroupBox2.Location = New System.Drawing.Point(267, 544)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(236, 174)
         Me.GroupBox2.TabIndex = 11
@@ -253,38 +184,15 @@ Partial Class Form1
         Me.RadioButton8.Text = "Nepal"
         Me.RadioButton8.UseVisualStyleBackColor = True
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(900, 39)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(111, 39)
-        Me.Label2.TabIndex = 13
-        Me.Label2.Text = "Rules"
-        '
-        'Button10
-        '
-        Me.Button10.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Button10.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.firetruck
-        Me.Button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button10.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button10.ForeColor = System.Drawing.Color.Thistle
-        Me.Button10.Location = New System.Drawing.Point(875, 543)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(183, 97)
-        Me.Button10.TabIndex = 14
-        Me.Button10.UseVisualStyleBackColor = False
-        '
         'SerialPort1
         '
         Me.SerialPort1.Handshake = System.IO.Ports.Handshake.XOnXOff
         '
         'ListView1
         '
-        Me.ListView1.Location = New System.Drawing.Point(713, 105)
+        Me.ListView1.Location = New System.Drawing.Point(632, 127)
         Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(555, 432)
+        Me.ListView1.Size = New System.Drawing.Size(514, 371)
         Me.ListView1.TabIndex = 15
         Me.ListView1.UseCompatibleStateImageBehavior = False
         '
@@ -292,37 +200,257 @@ Partial Class Form1
         '
         Me.Timer1.Interval = 50
         '
-        'Label3
+        'PictureBox3
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Location = New System.Drawing.Point(989, 547)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(65, 13)
-        Me.Label3.TabIndex = 16
-        Me.Label3.Text = "Start Engine"
+        Me.PictureBox3.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.rules
+        Me.PictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox3.Location = New System.Drawing.Point(1093, 333)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(170, 208)
+        Me.PictureBox3.TabIndex = 19
+        Me.PictureBox3.TabStop = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.Timon
+        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox2.Location = New System.Drawing.Point(822, 2)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(153, 125)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 18
+        Me.PictureBox2.TabStop = False
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.Start_Engine_page_001
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PictureBox1.Location = New System.Drawing.Point(770, 533)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(246, 185)
+        Me.PictureBox1.TabIndex = 17
+        Me.PictureBox1.TabStop = False
+        '
+        'Button19
+        '
+        Me.Button19.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.reverse_left1
+        Me.Button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button19.Location = New System.Drawing.Point(149, 321)
+        Me.Button19.Name = "Button19"
+        Me.Button19.Size = New System.Drawing.Size(112, 102)
+        Me.Button19.TabIndex = 7
+        Me.Button19.UseVisualStyleBackColor = True
+        '
+        'Button7
+        '
+        Me.Button7.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.reverse_left1
+        Me.Button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button7.Location = New System.Drawing.Point(149, 321)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(112, 102)
+        Me.Button7.TabIndex = 7
+        Me.Button7.Text = "Reverse Left"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Button18
+        '
+        Me.Button18.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.reverse_left___Copy
+        Me.Button18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button18.Location = New System.Drawing.Point(399, 321)
+        Me.Button18.Name = "Button18"
+        Me.Button18.Size = New System.Drawing.Size(109, 102)
+        Me.Button18.TabIndex = 9
+        Me.Button18.UseVisualStyleBackColor = True
+        '
+        'Button9
+        '
+        Me.Button9.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.reverse_left___Copy
+        Me.Button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button9.Location = New System.Drawing.Point(399, 321)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(109, 102)
+        Me.Button9.TabIndex = 9
+        Me.Button9.Text = "Reverse Right"
+        Me.Button9.UseVisualStyleBackColor = True
+        '
+        'Button17
+        '
+        Me.Button17.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.side_back
+        Me.Button17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button17.Location = New System.Drawing.Point(287, 375)
+        Me.Button17.Name = "Button17"
+        Me.Button17.Size = New System.Drawing.Size(80, 162)
+        Me.Button17.TabIndex = 8
+        Me.Button17.UseVisualStyleBackColor = True
+        '
+        'Button16
+        '
+        Me.Button16.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.side_right
+        Me.Button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button16.Location = New System.Drawing.Point(399, 237)
+        Me.Button16.Name = "Button16"
+        Me.Button16.Size = New System.Drawing.Size(158, 78)
+        Me.Button16.TabIndex = 6
+        Me.Button16.UseVisualStyleBackColor = True
+        '
+        'Button8
+        '
+        Me.Button8.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.side_back
+        Me.Button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button8.Location = New System.Drawing.Point(287, 375)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(80, 162)
+        Me.Button8.TabIndex = 8
+        Me.Button8.Text = "Back"
+        Me.Button8.UseVisualStyleBackColor = True
+        '
+        'Button15
+        '
+        Me.Button15.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.stop1
+        Me.Button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button15.Location = New System.Drawing.Point(267, 195)
+        Me.Button15.Name = "Button15"
+        Me.Button15.Size = New System.Drawing.Size(126, 174)
+        Me.Button15.TabIndex = 5
+        Me.Button15.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.side_right
+        Me.Button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button6.Location = New System.Drawing.Point(399, 237)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(158, 78)
+        Me.Button6.TabIndex = 6
+        Me.Button6.Text = "Right"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Button14
+        '
+        Me.Button14.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.sideleft
+        Me.Button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button14.Location = New System.Drawing.Point(106, 237)
+        Me.Button14.Name = "Button14"
+        Me.Button14.Size = New System.Drawing.Size(155, 78)
+        Me.Button14.TabIndex = 4
+        Me.Button14.UseVisualStyleBackColor = True
+        '
+        'Button5
+        '
+        Me.Button5.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.stop1
+        Me.Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button5.Location = New System.Drawing.Point(267, 195)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(126, 174)
+        Me.Button5.TabIndex = 5
+        Me.Button5.Text = "Stop"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Button13
+        '
+        Me.Button13.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.side___Copy
+        Me.Button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button13.Location = New System.Drawing.Point(399, 157)
+        Me.Button13.Name = "Button13"
+        Me.Button13.Size = New System.Drawing.Size(158, 74)
+        Me.Button13.TabIndex = 3
+        Me.Button13.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.sideleft
+        Me.Button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button4.Location = New System.Drawing.Point(106, 237)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(155, 78)
+        Me.Button4.TabIndex = 4
+        Me.Button4.Text = "Left"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Button12
+        '
+        Me.Button12.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.side_up
+        Me.Button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button12.Location = New System.Drawing.Point(287, 31)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(78, 158)
+        Me.Button12.TabIndex = 2
+        Me.Button12.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.side___Copy
+        Me.Button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button3.Location = New System.Drawing.Point(399, 157)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(158, 74)
+        Me.Button3.TabIndex = 3
+        Me.Button3.Text = "Sharp Right"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button11
+        '
+        Me.Button11.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.side
+        Me.Button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button11.Location = New System.Drawing.Point(103, 157)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(158, 74)
+        Me.Button11.TabIndex = 1
+        Me.Button11.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.side_up
+        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button2.Location = New System.Drawing.Point(287, 31)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(78, 158)
+        Me.Button2.TabIndex = 2
+        Me.Button2.Text = "Forward"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.BackgroundImage = Global.mars_oddessy.My.Resources.Resources.side
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button1.Location = New System.Drawing.Point(103, 157)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(158, 74)
+        Me.Button1.TabIndex = 1
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.Gold
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1280, 778)
-        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.PictureBox2)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ListView1)
-        Me.Controls.Add(Me.Button10)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.Button9)
-        Me.Controls.Add(Me.Button8)
+        Me.Controls.Add(Me.Button19)
         Me.Controls.Add(Me.Button7)
+        Me.Controls.Add(Me.Button18)
+        Me.Controls.Add(Me.Button9)
+        Me.Controls.Add(Me.Button17)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.Button16)
+        Me.Controls.Add(Me.Button8)
+        Me.Controls.Add(Me.Button15)
         Me.Controls.Add(Me.Button6)
+        Me.Controls.Add(Me.Button14)
         Me.Controls.Add(Me.Button5)
+        Me.Controls.Add(Me.Button13)
         Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.Button12)
         Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.PictureBox3)
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -330,6 +458,9 @@ Partial Class Form1
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -354,11 +485,20 @@ Partial Class Form1
     Friend WithEvents RadioButton6 As System.Windows.Forms.RadioButton
     Friend WithEvents RadioButton7 As System.Windows.Forms.RadioButton
     Friend WithEvents RadioButton8 As System.Windows.Forms.RadioButton
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Button10 As System.Windows.Forms.Button
     Friend WithEvents SerialPort1 As System.IO.Ports.SerialPort
     Friend WithEvents ListView1 As System.Windows.Forms.ListView
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
-    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Button11 As System.Windows.Forms.Button
+    Friend WithEvents Button12 As System.Windows.Forms.Button
+    Friend WithEvents Button13 As System.Windows.Forms.Button
+    Friend WithEvents Button14 As System.Windows.Forms.Button
+    Friend WithEvents Button15 As System.Windows.Forms.Button
+    Friend WithEvents Button16 As System.Windows.Forms.Button
+    Friend WithEvents Button17 As System.Windows.Forms.Button
+    Friend WithEvents Button18 As System.Windows.Forms.Button
+    Friend WithEvents Button19 As System.Windows.Forms.Button
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
 
 End Class
