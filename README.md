@@ -11,7 +11,7 @@ How to use/deploy
 1. Load the current stable version (Karkhana Rover Stable - Aruduino) on to an Aruduino.
 2. Make sure assumptions on pins used for sensor control, motor control match deployed platform. See Karkhana Rover
 Circuit Digaram,
-3. Download VB GUI
+3. Download VB GUI (mars oddessy GUI visualbasic .net) Executable file is in 'mars oddessy/bin/debug'
 4. You do NOT have to choose a com port. The application does this automatically.
 
 Future Improvements
