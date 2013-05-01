@@ -338,6 +338,10 @@
     End Sub
 
     Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
-        Form2.Show()
+        If (ListView1.Items.Count() <= 50) Then
+            Form2.Show()
+        Else
+            MsgBox("Maximum number of rules reached")
+        End If
     End Sub
 End Class
