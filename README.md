@@ -18,4 +18,4 @@ Future Improvements
 ====================
 1. Python Based GUI
 2. Share robot shield design
-3. Simply wires and sensors on robot
+3. Simple wires and sensors on robot
