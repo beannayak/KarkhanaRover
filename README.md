@@ -16,6 +16,6 @@ Circuit Digaram,
 
 Future Improvements
 ====================
-1. Python Based GUI
-2. Share robot shield design
-3. Simple wires and sensors on robot
+1. Python Based GUI.
+2. Share robot Printed Circuit Board's wire(shield) layout.
+3. Simple wires and sensors on robot.
